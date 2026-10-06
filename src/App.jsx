@@ -17,7 +17,7 @@ export default function App() {
       <header className="cabecera">
         <img src="/logo.png" alt="" className="logo" width="56" height="56" />
         <div>
-          <h1>Digital Invoice</h1>
+          <h1>TicketScan</h1>
           <p>Sube la foto de una factura o ticket y extraemos sus datos automáticamente con IA.</p>
         </div>
       </header>
