@@ -121,13 +121,13 @@ export default function SubirFactura({ onProcesar, cargando }) {
           step="any"
           value={tasaDia}
           onChange={(e) => setTasaDia(e.target.value)}
-          placeholder="Si se deja vacío, se toma de la factura"
+          placeholder="Si se deja vacío, se busca automáticamente"
           disabled={cargando}
         />
         {moneda === 'VES' && (
           <small>
-            Precio en $ = precio en Bs ÷ tasa. Si la dejas vacía se usa la impresa en la factura o la registrada para
-            ese día.
+            Precio en $ = precio en Bs ÷ tasa. Si la dejas vacía se usa la impresa en la factura, la registrada para
+            ese día o la oficial del BCV. Podrás revisarla antes de guardar.
           </small>
         )}
       </label>

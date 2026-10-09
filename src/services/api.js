@@ -29,6 +29,14 @@ export function procesarFactura(archivo, { moneda, tasaDia }) {
   return peticion('/bill/api/facturas/procesar', { method: 'POST', body: formData })
 }
 
+// Guarda la factura ya revisada junto con su imagen (opcional en las facturas manuales)
+export function guardarFactura(archivo, datos) {
+  const formData = new FormData()
+  if (archivo) formData.append('imagen', archivo)
+  formData.append('datos', JSON.stringify(datos))
+  return peticion('/bill/api/facturas', { method: 'POST', body: formData })
+}
+
 export function obtenerFactura(id, signal) {
   return peticion(`/bill/api/facturas/${encodeURIComponent(id)}`, { signal })
 }
@@ -45,6 +53,11 @@ export function buscarProductos(texto, signal) {
 
 export function listarTasas(signal) {
   return peticion('/bill/api/tasas', { signal })
+}
+
+// Tasa registrada para esa fecha o, si no hay, la oficial del BCV (no la guarda)
+export function tasaSugerida(fecha, signal) {
+  return peticion(`/bill/api/tasas/${encodeURIComponent(fecha)}/sugerida`, { signal })
 }
 
 export function guardarTasa(fecha, tasa) {
